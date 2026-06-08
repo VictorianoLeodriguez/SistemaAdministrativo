@@ -1,4 +1,10 @@
+using SistemaAdm.database;
+
 var builder = WebApplication.CreateBuilder(args);
+
+MYSQLHELPER.ConexaoPadrao = 
+    builder.Configuration.GetConnectionString("Banco")
+     ?? throw new Exception("A Conexão 'Banco' não pode ser encontrada");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -22,7 +28,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Login}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 
