@@ -6,6 +6,7 @@
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/bin/Debug/net10.0/SistemaAdm.runtimeconfig.json
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/bin/Debug/net10.0/SistemaAdm.dll
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/bin/Debug/net10.0/SistemaAdm.pdb
+/home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/bin/Debug/net10.0/BCrypt-Net-Next.dll
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/bin/Debug/net10.0/MySqlConnector.dll
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/Debug/net10.0/SistemaAdm.csproj.AssemblyReference.cache
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/Debug/net10.0/rpswa.dswa.cache.json
@@ -23,6 +24,7 @@
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/Debug/net10.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/Debug/net10.0/scopedcss/bundle/SistemaAdm.styles.css
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/Debug/net10.0/scopedcss/projectbundle/SistemaAdm.bundle.scp.css
+/home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/Debug/net10.0/compressed/ffk7a0v5ij-{0}-rj6vjmqolu-rj6vjmqolu.gz
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/Debug/net10.0/compressed/5e1kv8r3hv-{0}-lugek5hnai-lugek5hnai.gz
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/Debug/net10.0/compressed/mu010j7ccw-{0}-61n19gt1b8-61n19gt1b8.gz
 /home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/Debug/net10.0/compressed/8ehw4zqebf-{0}-fr7q2aak1r-fr7q2aak1r.gz

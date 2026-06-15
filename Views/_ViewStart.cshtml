@@ -1,3 +1,6 @@
 ﻿@{
-    Layout = "_Layout";
+    if (ViewContext.ViewData["Controller"]?.ToString() == "Login") //Pagina de login
+        Layout = null;
+    else
+        Layout = "_Layout"; //Resto das páginas iram usar o Layout
 }
