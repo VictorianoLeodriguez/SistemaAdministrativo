@@ -3,13 +3,42 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-body{
-    background-image: url(../Images/);
-    background-size: cover;
+body {
+    background-image: url('../Images/Background.jpg');
+    background-size: 120%;
     background-position: center;
-    font-family: 'Poppins', sans-serif;
     background-repeat: no-repeat;
+
+    animation: zoomBackground 8s infinite alternate ease-in-out;
+}
+
+body::before {
+    content: '';
+    inset:0;
+    background: linear-gradient(45deg,rgba(0, 80, 40, 0.6),rgba(0, 180, 90, 0.5));
+    position: fixed;
+    animation: moveBackground 30s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes zoomBackground {
+    from {
+        background-size: 120%;
+    }
+
+    to {
+        background-size: 135%;
+    }
+}
+
+@keyframes moveBackground {
+    from {
+        background-position: left center;
+    }
+
+    to {
+        background-position: right center;
+    }
 }
 
 .conteiner{
@@ -17,8 +46,9 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    background: rgba(0,0,0,0.8);
-    padding: 40px;
+    min-height: auto;
+    min-width: 450px;
+    background: rgba(250,250,250,0.5);
+    padding: 20px;
     border-radius: 10px;
 }
