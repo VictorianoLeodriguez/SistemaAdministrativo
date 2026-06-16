@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/SistemaAdm.csproj": {}
+    "/home/enzo/SistemaAdministrativo/SistemaAdm.csproj": {}
   },
   "projects": {
-    "/home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/SistemaAdm.csproj": {
+    "/home/enzo/SistemaAdministrativo/SistemaAdm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/SistemaAdm.csproj",
+        "projectUniqueName": "/home/enzo/SistemaAdministrativo/SistemaAdm.csproj",
         "projectName": "SistemaAdm",
-        "projectPath": "/home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/SistemaAdm.csproj",
-        "packagesPath": "/home/enzovictorianoleodriguez/.nuget/packages/",
-        "outputPath": "/home/enzovictorianoleodriguez/SistemaAdm/SistemaAdministrativo/obj/",
+        "projectPath": "/home/enzo/SistemaAdministrativo/SistemaAdm.csproj",
+        "packagesPath": "/home/enzo/.nuget/packages/",
+        "outputPath": "/home/enzo/SistemaAdministrativo/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/enzovictorianoleodriguez/.nuget/NuGet/NuGet.Config"
+          "/home/enzo/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "/usr/lib/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net10.0": {
@@ -72,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/enzovictorianoleodriguez/.dotnet/sdk/10.0.203/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/10.0.108/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
