@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>f5b59667-5d36-4dc9-83c3-5c4d0c17e28a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
