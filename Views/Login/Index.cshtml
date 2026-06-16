@@ -1,3 +1,5 @@
+@model SistemaAdm.Models.User
+
 @{
     Layout = null;
 }
@@ -7,22 +9,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axes-Management</title>
+    <title>Axis-Login</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 </head>
 <body>
     <div class='conteiner'>
-        <div class='row'>
-            <div class='col-md-12 text-center nowrap offset-4'>
+        <div class='row justify-content-center'>
+            <div class='col-md-12 text-center nowrap'>
                 <h3 >
-                    Axes-Management
+                    <span class="text-white mb-2">Axis-Management</span>
                 </h3>
-                <form method="post" action="/Login/Auth">
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
                     <div class="form-group">
-
+                        @Html.Label("","CPF", new { @class = "text-white"})
+                        @Html.EditorFor(n=> n.CPF, new { htmlAttributes = new { placeholder = "Digite seu CPF"} })
+                        @Html.ValidationMessageFor(n => n.CPF, "", new { @class = "text-danger" })
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>    
