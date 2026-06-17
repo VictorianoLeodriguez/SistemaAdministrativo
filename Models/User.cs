@@ -15,9 +15,8 @@ public class User
     [EmailAddress(ErrorMessage = "O campo email deve conter um endereço de email válido")]
     public string Email {get;set;}
 
-    [Required(ErrorMessage = "O campo CPF é obrigatório")]
-    [StringLength(11, ErrorMessage = "O campo CPF deve conter exatamente 11 caracteres")]
-    public string CPF {get;set;}
+    [Required(ErrorMessage = "O campo de Documento (CPF/CNPJ) é obrigatório")]
+    public string CPFJ {get;set;}
 
     public bool Ativo {get;set;}
 }
