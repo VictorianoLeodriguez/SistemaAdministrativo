@@ -69,6 +69,8 @@ public class MYSQLHELPER
             if(Conexao == null)
                 return null;
 
+            query.Connection = Conexao;
+
             using (MySqlDataReader leitor = query.ExecuteReader())
             {
                 lista = new List<Dictionary<string, string>>();
@@ -87,7 +89,7 @@ public class MYSQLHELPER
                     lista.Add(linha);
                 }
             }
-            if (lista.Count == 0 || lista == null)
+            if (lista == null || lista.Count == 0)
                 return null;
         }
         catch(Exception ex)
@@ -99,6 +101,7 @@ public class MYSQLHELPER
         {
             string menssagem = errorMsg;
             FechaConexao(Conexao, out errorMsg);
+            errorMsg = string.IsNullOrEmpty(errorMsg) ? menssagem : errorMsg;
         }
         return lista;
     }
@@ -116,6 +119,8 @@ public class MYSQLHELPER
             Conexao = AbreConexao(out errorMsg);
             if(Conexao == null)
                 return null;
+
+            query.Connection = Conexao;
 
             using (MySqlDataReader leitor = query.ExecuteReader())
             {
@@ -142,6 +147,7 @@ public class MYSQLHELPER
         {
             string menssagem = errorMsg;
             FechaConexao(Conexao, out errorMsg);
+            errorMsg = string.IsNullOrEmpty(errorMsg) ? menssagem : errorMsg;
         }
         return obj;
     }
@@ -166,7 +172,7 @@ public class MYSQLHELPER
 
             if(tipo == QueryMode.Insert)
             {
-                query.CommandText = "SELECT LAST_INSET_ID()";
+                query.CommandText = "SELECT LAST_INSERT_ID()";
                 id = (int)query.ExecuteScalar();
             }
             return true;
