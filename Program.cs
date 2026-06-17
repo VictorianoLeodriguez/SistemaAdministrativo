@@ -1,9 +1,20 @@
+using Microsoft.Extensions.Options;
 using SistemaAdm.database;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(Options =>
+{
+    Options.IdleTimeout = TimeSpan.FromMinutes(30);
+    Options.Cookie.IsEssential = true;
+    Options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    Options.Cookie.HttpOnly = true;
+});
 
 var app = builder.Build();
 
@@ -26,6 +37,8 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapStaticAssets();
 
