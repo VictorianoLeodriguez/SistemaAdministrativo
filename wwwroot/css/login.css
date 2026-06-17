@@ -48,13 +48,44 @@ body::before {
     transform: translate(-50%, -50%);
     min-height: auto;
     min-width: 450px;
-    background: rgba(250,250,250,0.2);
+    background: rgba(250,250,250,0.6);
     padding: 20px;
     border-radius: 10px;
 }
 
+.login-content{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
 
 .conteiner-foto{
-    position: absolute;
+    width: 150px;
+    height: 200px;
+    background-image:linear-gradient(rgba(255,255,255,0.2),rgba(255,255,255,0.1)),url("../Images/FotoCover.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
 
+.input-camp{
+    height: 31px;
+    width: 250px;
+    border-radius: 10px;
+
+    background-color: #eef2ef;
+    border: 1px solid #c8d4cc;
+
+    transition: all 0.25s ease;
+}
+
+.input-camp:focus{
+    outline: none;
+
+    background-color: #f8fbf8;
+    border-color: #4caf50;
+
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
 }

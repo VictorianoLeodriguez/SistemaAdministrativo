@@ -6,10 +6,10 @@ public class User
     public int Codigo {get;set;}
 
     [Required(ErrorMessage = "O campo nome é obrigatório")]
-    public string nome {get;set;}
+    public string Nome {get;set;}
 
     [Required(ErrorMessage = "O campo senha é obrigatório")]
-    public string senha {get;set;}
+    public string Senha {get;set;}
 
     [Required(ErrorMessage = "O campo email é obrigatório")]
     [EmailAddress(ErrorMessage = "O campo email deve conter um endereço de email válido")]

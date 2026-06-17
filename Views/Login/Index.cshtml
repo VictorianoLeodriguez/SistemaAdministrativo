@@ -16,19 +16,27 @@
 <body>
     <div class='conteiner'>
         <div class='row justify-content-center'>
-            <div class='col-md-12 text-center nowrap'>
-                <h3 >
-                    <span class="text-white mb-2">Axis-Management</span>
-                </h3>
-                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-group">
-                        @Html.Label("","CPF", new { @class = "text-white"})
-                        @Html.EditorFor(n=> n.CPF, new { htmlAttributes = new { placeholder = "Digite seu CPF"} })
-                        @Html.ValidationMessageFor(n => n.CPF, "", new { @class = "text-danger" })
-                    </div>
-                }
+            <div class="login-content">
+                <div class='conteiner-foto'></div>
+                <div class='text-center nowrap'>
+                    <h3 >
+                        <span class="text-white mb-2">Axis-Management</span>
+                    </h3>
+                    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.Label("","CPF:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
+                            @Html.EditorFor(n=> n.CPF, new { htmlAttributes = new { placeholder = " Digite seu CPF ", @class = "input-camp"} })
+                            @Html.ValidationMessageFor(n => n.CPF, "", new { @class = "text-danger" })
+                        </div>
+                            <div class="form-group mt-3">
+                                @Html.Label("","Senha:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
+                                @Html.PasswordFor(n=> n.Senha, new { @class = "input-camp", placeholder = " Digite sua Senha "})
+                                @Html.ValidationMessageFor(n => n.Senha, "", new { @class = "text-danger" })
+                            </div>
+                    }
+                </div>
             </div>
         </div>
     </div>    
