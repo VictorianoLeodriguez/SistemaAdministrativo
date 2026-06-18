@@ -5,7 +5,7 @@
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 </head>
 <body>
-    <div class='conteiner'>
+    <div class='conteiner' style="view-transition-name: card-login">
         <div class='row justify-content-center'>
             <div class="login-content">
                 <div class='conteiner-foto'></div>
@@ -22,19 +22,28 @@
                     <h3 >
                         <span class="text-white mb-2">Axis-Management</span>
                     </h3>
-                    @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                    @using (Html.BeginForm("Auth", "LoginController", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
                         <div class="form-group">
                             @Html.Label("","CPF:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
-                            @Html.EditorFor(n=> n.CPF, new { htmlAttributes = new { placeholder = " Digite seu CPF ", @class = "input-camp"} })
-                            @Html.ValidationMessageFor(n => n.CPF, "", new { @class = "text-danger" })
+                            @Html.EditorFor(n=> n.CPFJ, new { htmlAttributes = new { placeholder = " Digite seu CPF ", @class = "input-camp"} })
+                            @Html.ValidationMessageFor(n => n.CPFJ, "", new { @class = "text-danger" })
                         </div>
-                            <div class="form-group mt-3">
-                                @Html.Label("","Senha:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
-                                @Html.PasswordFor(n=> n.Senha, new { @class = "input-camp", placeholder = " Digite sua Senha "})
-                                @Html.ValidationMessageFor(n => n.Senha, "", new { @class = "text-danger" })
-                            </div>
+                        <div class="form-group mt-3">
+                            @Html.Label("","Senha:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
+                            @Html.PasswordFor(n=> n.Senha, new { @class = "input-camp", placeholder = " Digite sua Senha "})
+                            @Html.ValidationMessageFor(n => n.Senha, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <button class="bntLogin" id="btnSubmit" type="submit">
+                                Entrar
+                            </button>
+                            <a asp-controller="Cadastro" asp-action="index" class="bntLogin">
+                                Cadastrar-se
+                            </a>
+                        </div>
+
                     }
                 </div>
             </div>

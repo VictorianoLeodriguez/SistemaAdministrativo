@@ -6,6 +6,6 @@
     }
   },
   "ConnectionStrings":{
-    "Banco": "server=localhost;port=3306;database=SistemaAdm;user=root;pwd=MinhaSenha"
+    "Banco": ""
   }
 }

@@ -1,7 +1,6 @@
 using System.Net.Mail;
-using BCrypt.Net;
 
-namespace SistemaAdm.Utils;
+namespace SistemaAdm.Helpers;
 
 public class Utils
 {
@@ -85,58 +84,58 @@ public class Utils
     }
 
     public static bool ValidarCnpj(string cnpj)
-{
-    if (string.IsNullOrWhiteSpace(cnpj))
-        return false;
+    {
+        if (string.IsNullOrWhiteSpace(cnpj))
+            return false;
 
-    cnpj = cnpj.Replace(".", "").Replace("/", "").Replace("-", "").Trim();
+        cnpj = cnpj.Replace(".", "").Replace("/", "").Replace("-", "").Trim();
 
-    if (cnpj.Length != 14)
-        return false;
+        if (cnpj.Length != 14)
+            return false;
 
-    if (cnpj.Distinct().Count() == 1)
-        return false;
+        if (cnpj.Distinct().Count() == 1)
+            return false;
 
-    int[] multiplicador1 = { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-    int[] multiplicador2 = { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+        int[] multiplicador1 = { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+        int[] multiplicador2 = { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
 
-    string tempCnpj = cnpj.Substring(0, 12);
+        string tempCnpj = cnpj.Substring(0, 12);
 
-    int soma = 0;
-    for (int i = 0; i < 12; i++)
-        soma += (tempCnpj[i] - '0') * multiplicador1[i];
+        int soma = 0;
+        for (int i = 0; i < 12; i++)
+            soma += (tempCnpj[i] - '0') * multiplicador1[i];
 
-    int resto = soma % 11;
-    resto = resto < 2 ? 0 : 11 - resto;
+        int resto = soma % 11;
+        resto = resto < 2 ? 0 : 11 - resto;
 
-    string digito = resto.ToString();
+        string digito = resto.ToString();
 
-    tempCnpj += digito;
+        tempCnpj += digito;
 
-    soma = 0;
-    for (int i = 0; i < 13; i++)
-        soma += (tempCnpj[i] - '0') * multiplicador2[i];
+        soma = 0;
+        for (int i = 0; i < 13; i++)
+            soma += (tempCnpj[i] - '0') * multiplicador2[i];
 
-    resto = soma % 11;
-    resto = resto < 2 ? 0 : 11 - resto;
+        resto = soma % 11;
+        resto = resto < 2 ? 0 : 11 - resto;
 
-    digito += resto.ToString();
+        digito += resto.ToString();
 
-    return cnpj.EndsWith(digito);
-}
+        return cnpj.EndsWith(digito);
+    }
 
 public static bool ValidarDocumento(string documento)
-{
-    documento = documento.Replace(".", "").Replace("-", "").Replace("/", "").Trim();
+    {
+        documento = documento.Replace(".", "").Replace("-", "").Replace("/", "").Trim();
 
-    if (documento.Length == 11)
-        return ValidarCpf(documento);
+        if (documento.Length == 11)
+            return ValidarCpf(documento);
 
-    if (documento.Length == 14)
-        return ValidarCnpj(documento);
+        if (documento.Length == 14)
+            return ValidarCnpj(documento);
 
-    return false;
-}
+        return false;
+    }
 
     public static string HashSenha(string senha)
     {
@@ -147,4 +146,4 @@ public static bool ValidarDocumento(string documento)
     {
         return BCrypt.Net.BCrypt.Verify(senha, hash);
     }
-}
+}   
