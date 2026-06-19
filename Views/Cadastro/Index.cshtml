@@ -1,19 +1,67 @@
+@model SistemaAdm.ViewModel.CadastroModel
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axis-Login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/cadUser.css" asp-append-version="true" />
 </head>
 <body>
-    <div class='conteiner'>
-        <div class='row justify-content-center'>
-        </div>   
-    </div> 
+    <div class="conteiner">
+        <h2 class="text-center mb-4">Cadastro</h2>
+
+        @using (Html.BeginForm("Cadastrar", "Cadastro", FormMethod.Post))
+        {
+            <div class="row justify-content-center">
+                <div class="col-md-6 mb-1">
+                    <div class="form-group">
+                        @Html.Label("", "Nome:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
+                        @Html.EditorFor(n => n.Nome, new { htmlAttributes = new { @class = "input-camp" } })
+                    </div>
+                    @Html.ValidationMessageFor(n => n.Nome, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6 mb-1">
+                    <div class="form-group">
+                        @Html.Label("", "CPF:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
+                        @Html.EditorFor(n => n.CPFJ, new { htmlAttributes = new { @class = "input-camp" } })
+                    </div>
+                    @Html.ValidationMessageFor(n => n.CPFJ, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 mb-1">
+                    <div class="form-group">
+                        @Html.Label("", "Email:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
+                        @Html.EditorFor(n => n.Email, new { htmlAttributes = new { @class = "input-camp" } })
+                    </div>
+                    @Html.ValidationMessageFor(n => n.Email, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6 mb-1">
+                    <div class="form-group">
+                        @Html.Label("", "Senha:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
+                        @Html.PasswordFor(n => n.Senha, new { @class = "input-camp" })
+                    </div>
+                    @Html.ValidationMessageFor(n => n.Senha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row mt-2 justify-content-center">
+                <div class="col text-center">
+                    <a asp-controller="Login" asp-action="Index" class="btn btn-secondary">
+                        Voltar
+                    </a>
+                    <button type="submit" class="btn btn-success ms-2">
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
 </body>
+</html>

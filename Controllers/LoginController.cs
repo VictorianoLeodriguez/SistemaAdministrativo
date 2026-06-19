@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaAdm.Service;
-using SistemaAdm.Models;
 using SistemaAdm.Contracts;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using SistemaAdm.ViewModel;
 
 namespace SistemaAdm.Controllers;
 
@@ -14,10 +16,11 @@ public class LoginController : Controller
     }
 
     [HttpPost]
-    public IActionResult Auth(User user)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Auth(LoginModel user)
     {
         if(!ModelState.IsValid){
-            return RedirectToAction("Index");
+            return View("Index", user);
         }
 
         LoginResult resultadoLogin = LoginService.Autenticar(user.CPFJ, user.Senha);
@@ -25,8 +28,18 @@ public class LoginController : Controller
         if (!resultadoLogin.Sucesso)
         {
             ModelState.AddModelError("", resultadoLogin.Mensagem);
-            return View ("index", "Login");
+            return View ("index", user);
         }
+
+        var infos = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, user.CPFJ)
+        };
+
+        var identidade = new ClaimsIdentity(infos, "CookieAuth");
+        var principal = new ClaimsPrincipal(identidade);
+
+        await HttpContext.SignInAsync("CookieAuth", principal);
 
         // autenticação futura
         return RedirectToAction("Index");

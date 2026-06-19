@@ -9,6 +9,13 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDistributedMemoryCache();
 
+builder.Services.AddAuthentication("CookieAuth")
+    .AddCookie("CookieAuth", options =>
+    {
+        options.LoginPath = "/Login/Index";
+        options.AccessDeniedPath = "/Login/Index";
+    });
+
 builder.Services.AddSession(Options =>
 {
     Options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -24,6 +31,7 @@ Console.WriteLine(app.Environment.EnvironmentName);
 MYSQLHELPER.ConexaoPadrao = 
     builder.Configuration.GetConnectionString("Banco")
         ?? throw new Exception("A Conexão 'Banco' não pode ser encontrada");
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -33,8 +41,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseSession();

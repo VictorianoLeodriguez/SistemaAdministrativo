@@ -1,35 +1,85 @@
 using MySqlConnector;
 using SistemaAdm.Models;
+using SistemaAdm.ViewModel;
 
 namespace SistemaAdm.database;
 
 public class UserDB
 {
-   public static User Authenticar(string CPFJ)
-  {
-     string sqlString = @"SELECT USR_AIC, USR_NAME, USR_PASS, USR_EML, USR_CPFJ,
-                          USR_ATV, USR_CAD_DT
-                          FROM USRK
-                          WHERE USR_CPFJ = @CPFJ AND USR_ATV = 1";
-
-    MySqlCommand query = new(sqlString);
-    query.Parameters.AddWithValue("@CPFJ", CPFJ);
-
-    var Result = MYSQLHELPER.ExecutaConsultaUnica(query, out string ErrorMsg);
-
-    if (Result == null)
-        return null;
-
-    User user = new User
+    public static User BuscarUser(string cpfj)
     {
-        Codigo = int.Parse(Result["USR_AIC"]),
-        Nome = Result["USR_NAME"],
-        Senha = Result["USR_PASS"],
-        Email = Result["USR_EML"],
-        CPFJ = Result["USR_CPFJ"],
-        Ativo = Result["USR_ATV"] == "1"
-    };
+        const string sqlCommand = @"SELECT USR_AIC, USR_NAME, USR_PASS, USR_EML, 
+                            USR_CPFJ, USR_ATV, USR_CAD_DT
+                            FROM USRK
+                            WHERE USR_CPFJ = @cpfj AND USR_ATV = 1";
 
-    return user;
-  }
+        var query = new MySqlCommand(sqlCommand);
+        query.Parameters.AddWithValue("@cpfj", cpfj);
+
+        var result = MYSQLHELPER.ExecutaConsultaUnica(query, out string errorMsg);
+
+        if (!string.IsNullOrEmpty(errorMsg))
+            throw new Exception(errorMsg);
+
+        if (result == null)
+            return null;
+
+        return new User
+        {
+            Codigo = int.TryParse(result["USR_AIC"], out int cod) ? cod : 0,
+            Nome   = result.GetValueOrDefault("USR_NAME") ?? string.Empty,
+            Senha  = result.GetValueOrDefault("USR_PASS") ?? string.Empty,
+            Email  = result.GetValueOrDefault("USR_EML")  ?? string.Empty,
+            CPFJ   = result.GetValueOrDefault("USR_CPFJ") ?? string.Empty,
+            Ativo  = result.GetValueOrDefault("USR_ATV")  == "1"
+        };
+    }
+
+    public static User BuscarEmail(string email)
+    {
+        const string sqlCommand = @"SELECT USR_AIC, USR_NAME, USR_PASS, USR_EML
+                                    USR_CPFJ, USR_ATV, USR_CAD_DT
+                                    FROM USRK
+                                    WHERE USR_EML = @EMAIL AND USR_ATV = 1";
+
+        var query = new MySqlCommand(sqlCommand);
+        query.Parameters.AddWithValue("@EMAIL", email);
+
+        var results = MYSQLHELPER.ExecutaConsultaUnica(query, out string errorMsg);
+
+        if(!string.IsNullOrEmpty(errorMsg))
+            throw new Exception(errorMsg);
+
+        if(results == null)
+            return null;
+
+        return new User
+        {
+            Codigo = int.TryParse(results["USR_AIC"], out int cod) ? cod : 0,
+            Nome   = results.GetValueOrDefault("USR_NAME") ?? string.Empty,
+            Senha  = results.GetValueOrDefault("USR_PASS") ?? string.Empty,
+            Email  = results.GetValueOrDefault("USR_EML")  ?? string.Empty,
+            CPFJ   = results.GetValueOrDefault("USR_CPFJ") ?? string.Empty,
+            Ativo  = results.GetValueOrDefault("USR_ATV")  == "1"
+        };
+    }
+
+    public static bool CadastrarUser(User cad, out string errorMsg)
+    {
+        const string sqlCommand = @"INSERT INTO USRK (USR_NAME, USR_EML, USR_CPFJ, USR_ATV, USR_PASS, USR_CAD_DT)
+                                    VALUES (@nome, @email, @cpfj, 1, @senha, NOW())";
+
+          var query = new MySqlCommand(sqlCommand);
+        query.Parameters.AddWithValue("@nome",  cad.Nome);
+        query.Parameters.AddWithValue("@senha", cad.Senha);
+        query.Parameters.AddWithValue("@email", cad.Email);
+        query.Parameters.AddWithValue("@cpfj",  cad.CPFJ);
+
+        bool ok = MYSQLHELPER.Executar(query, MYSQLHELPER.QueryMode.Insert, out errorMsg, out _);
+
+        if (!ok)
+            return false;
+
+        return true;                           
+    }
 }

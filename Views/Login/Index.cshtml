@@ -1,4 +1,4 @@
-@model SistemaAdm.Models.User
+@model SistemaAdm.ViewModel.LoginModel
 
 @{
     Layout = null;
@@ -22,18 +22,19 @@
                     <h3 >
                         <span class="text-white mb-2">Axis-Management</span>
                     </h3>
-                    @using (Html.BeginForm("Auth", "LoginController", FormMethod.Post))
+                    @using (Html.BeginForm("Auth", "Login", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
                         <div class="form-group">
                             @Html.Label("","CPF:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
                             @Html.EditorFor(n=> n.CPFJ, new { htmlAttributes = new { placeholder = " Digite seu CPF ", @class = "input-camp"} })
-                            @Html.ValidationMessageFor(n => n.CPFJ, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group mt-3">
                             @Html.Label("","Senha:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
                             @Html.PasswordFor(n=> n.Senha, new { @class = "input-camp", placeholder = " Digite sua Senha "})
-                            @Html.ValidationMessageFor(n => n.Senha, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="d-block">
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             <button class="bntLogin" id="btnSubmit" type="submit">
@@ -43,9 +44,8 @@
                                 Cadastrar-se
                             </a>
                         </div>
-
                     }
-                </div>
+                <div/>
             </div>
         </div>
     </div>    
