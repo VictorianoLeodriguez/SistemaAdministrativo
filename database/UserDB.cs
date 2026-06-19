@@ -69,17 +69,17 @@ public class UserDB
         const string sqlCommand = @"INSERT INTO USRK (USR_NAME, USR_EML, USR_CPFJ, USR_ATV, USR_PASS, USR_CAD_DT)
                                     VALUES (@nome, @email, @cpfj, 1, @senha, NOW())";
 
-          var query = new MySqlCommand(sqlCommand);
-        query.Parameters.AddWithValue("@nome",  cad.Nome);
-        query.Parameters.AddWithValue("@senha", cad.Senha);
-        query.Parameters.AddWithValue("@email", cad.Email);
-        query.Parameters.AddWithValue("@cpfj",  cad.CPFJ);
+        var parametros = new List<MySqlParameter>
+        {
+                new("@nome",  cad.Nome),
+                new("@senha", cad.Senha),
+                new("@email", cad.Email),
+                new("@cpfj",  cad.CPFJ)
+        };
 
-        bool ok = MYSQLHELPER.Executar(query, MYSQLHELPER.QueryMode.Insert, out errorMsg, out _);
+        var query = new MySqlCommand(sqlCommand);
+        query.Parameters.AddRange(parametros.ToArray());
 
-        if (!ok)
-            return false;
-
-        return true;                           
+        return MYSQLHELPER.Executar(query, MYSQLHELPER.QueryMode.Insert, out errorMsg, out _);       
     }
 }
