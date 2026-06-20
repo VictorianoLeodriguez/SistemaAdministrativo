@@ -10,16 +10,7 @@ public class LoginService
 {
     public static LoginResult Autenticar(string documento, string senha)
     {
-        if (!Utils.ValidarDocumento(documento))
-        {
-            return new LoginResult
-            {
-                Sucesso = false,
-                Mensagem = documento.Length == 11 ? "CPF Inválido" : "CNPJ Inválido"
-            };
-        }
-
-        User userBanco = UserDB.BuscarUser(documento);
+        User userBanco = UserDB.BuscarUserAuth(documento);
 
         if (userBanco == null || !Utils.VerificarSenha(senha, userBanco.Senha))
         {

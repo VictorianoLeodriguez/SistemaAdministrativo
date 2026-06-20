@@ -15,7 +15,7 @@
     <div class="conteiner">
         <h2 class="text-center mb-4">Cadastro</h2>
 
-        @using (Html.BeginForm("Cadastrar", "Cadastro", FormMethod.Post))
+        @using (Html.BeginForm("SalvarUser", "Cadastro", FormMethod.Post))
         {
             <div class="row justify-content-center">
                 <div class="col-md-6 mb-1">
@@ -50,6 +50,12 @@
                     @Html.ValidationMessageFor(n => n.Senha, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+            @if (TempData["Sucesso"] != null){
+                <div class="alert-success">
+                    @TempData["Sucesso"]
+                </div>
+            }
 
             <div class="row mt-2 justify-content-center">
                 <div class="col text-center">
