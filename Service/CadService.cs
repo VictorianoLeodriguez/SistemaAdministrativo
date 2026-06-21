@@ -37,14 +37,16 @@ public class CadService
             };
         }
 
-        var user = UserDB.CadastrarUser(nome, senha, email, cpfj, out string errorMsg);
+        var hash = Utils.HashSenha(senha);
+
+        var user = UserDB.CadastrarUser(nome, hash, email, cpfj, out string errorMsg);
 
         if(!string.IsNullOrEmpty(errorMsg))
         {
             return new CadastroResult
             {
                 Sucesso = false,
-                Mensagem = $"{errorMsg}"
+                Mensagem = "Erro ao Cadastrar usuário:" + errorMsg
             };
         }
 
