@@ -74,10 +74,8 @@ body::before {
     height: 31px;
     width: 250px;
     border-radius: 10px;
-
     background-color: #eef2ef;
     border: 1px solid #c8d4cc;
-
     transition: all 0.25s ease;
 }
 

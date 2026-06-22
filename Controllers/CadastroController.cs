@@ -23,11 +23,12 @@ public class CadastroController : Controller
     
         if (!resultado.Sucesso)
         {
-            ModelState.AddModelError("", resultado.Mensagem);
+            ViewBag.Error = resultado.Mensagem;
             return View("index", cadastro);
         }
     
         TempData["Sucesso"] = resultado.Mensagem;
-        return RedirectToAction("Index");
+
+        return RedirectToAction("Index", "Login");
     }
 }

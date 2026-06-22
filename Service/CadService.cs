@@ -24,16 +24,18 @@ public class CadService
             return new CadastroResult
             {
                 Sucesso = false,
-                Mensagem = "Email Inválido"
+                Mensagem = "Email Inválido",
             };
         }
 
-        if(UserDB.ExisteUser(email, cpfj) != null)
+        User userExiste = UserDB.ExisteUser(email, cpfj);
+        
+        if(userExiste != null)
         {
             return new CadastroResult
             {
-              Sucesso = false,
-              Mensagem = "Já Existe um User com Esse Email ou Cpf"  
+                Sucesso = false,
+                Mensagem = "E-mail ou CPF/CNPJ já cadastrado."
             };
         }
 
@@ -46,7 +48,7 @@ public class CadService
             return new CadastroResult
             {
                 Sucesso = false,
-                Mensagem = "Erro ao Cadastrar usuário:" + errorMsg
+                Mensagem = "Erro ao Cadastrar usuário:"
             };
         }
 

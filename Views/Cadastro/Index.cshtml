@@ -23,14 +23,14 @@
                         @Html.Label("", "Nome:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
                         @Html.EditorFor(n => n.Nome, new { htmlAttributes = new { @class = "input-camp" } })
                     </div>
-                    @Html.ValidationMessageFor(n => n.Nome, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(n => n.Nome, "", new { @class = "text-center text-danger" })
                 </div>
                 <div class="col-md-6 mb-1">
                     <div class="form-group">
                         @Html.Label("", "CPF:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
                         @Html.EditorFor(n => n.CPFJ, new { htmlAttributes = new { @class = "input-camp" } })
                     </div>
-                    @Html.ValidationMessageFor(n => n.CPFJ, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(n => n.CPFJ, "", new { @class = "text-center text-danger" })
                 </div>
             </div>
 
@@ -40,23 +40,22 @@
                         @Html.Label("", "Email:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
                         @Html.EditorFor(n => n.Email, new { htmlAttributes = new { @class = "input-camp" } })
                     </div>
-                    @Html.ValidationMessageFor(n => n.Email, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(n => n.Email, "", new { @class = "text-center text-danger" })
                 </div>
                 <div class="col-md-6 mb-1">
                     <div class="form-group">
-                        @Html.Label("", "Senha:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
+                        @Html.Label("", "Senha:", new { @class = " w-100 text-start fw-bold d-block mb-1" }) <span asp-validation-for="Senha" class="text-danger">*</span>
                         @Html.PasswordFor(n => n.Senha, new { @class = "input-camp" })
                     </div>
-                    @Html.ValidationMessageFor(n => n.Senha, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(n => n.Senha, "", new { @class = "text-center text-danger" })
                 </div>
             </div>
-
-            @if (TempData["Sucesso"] != null){
-                <div class="alert-success">
-                    @TempData["Sucesso"]
+            @if (ViewBag.Error != null)
+            {
+                <div class="text-center alert alert-danger" style="background-color: none; border: none">
+                    @ViewBag.Error
                 </div>
             }
-
             <div class="row mt-2 justify-content-center">
                 <div class="col text-center">
                     <a asp-controller="Login" asp-action="Index" class="btn btn-secondary">

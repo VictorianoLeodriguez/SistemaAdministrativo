@@ -7,7 +7,7 @@ public class CadastroModel
     [Required(ErrorMessage = "O campo Nome é Obrigatório")]
     public string Nome { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "O campo de Email é Obrigatório")]
     [EmailAddress(ErrorMessage = "Necessario um Endereço de email Valido")]
     public string Email { get; set; }
 
