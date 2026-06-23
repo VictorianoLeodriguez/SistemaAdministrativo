@@ -152,7 +152,7 @@ public class MYSQLHELPER
         return obj;
     }
     
-    public static bool Executar(MySqlCommand query, QueryMode tipo, out string errorMsg, out int id)
+    public static bool Executar(MySqlCommand query, QueryMode tipo, out string errorMsg, out long id)
     {
         errorMsg = string.Empty;
         id = 0;
@@ -173,7 +173,7 @@ public class MYSQLHELPER
             if(tipo == QueryMode.Insert)
             {
                 query.CommandText = "SELECT LAST_INSERT_ID()";
-                id = (int)query.ExecuteScalar();
+                id = Convert.ToInt64(query.ExecuteScalar());
             }
             return true;
         }

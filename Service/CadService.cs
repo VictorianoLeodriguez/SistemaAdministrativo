@@ -48,7 +48,7 @@ public class CadService
             return new CadastroResult
             {
                 Sucesso = false,
-                Mensagem = "Erro ao Cadastrar usuário:"
+                Mensagem = "Erro ao Cadastrar usuário:" + errorMsg
             };
         }
 

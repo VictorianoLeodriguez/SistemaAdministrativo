@@ -18,41 +18,49 @@
         @using (Html.BeginForm("SalvarUser", "Cadastro", FormMethod.Post))
         {
             <div class="row justify-content-center">
-                <div class="col-md-6 mb-1">
+                <div class="col-12 col-md-6 mb-2">
                     <div class="form-group">
-                        @Html.Label("", "Nome:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
-                        @Html.EditorFor(n => n.Nome, new { htmlAttributes = new { @class = "input-camp" } })
+                        <label class="fw-bold mb-1 d-block">
+                            Nome:<span class="text-danger">&nbsp;*</span>
+                        </label>
+                        @Html.EditorFor(n => n.Nome, new { htmlAttributes = new { @class = "input-camp", placeholder = "Digite seu nome" } })
                     </div>
                     @Html.ValidationMessageFor(n => n.Nome, "", new { @class = "text-center text-danger" })
                 </div>
-                <div class="col-md-6 mb-1">
+                <div class="col-12 col-md-6 mb-2">
                     <div class="form-group">
-                        @Html.Label("", "CPF:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
-                        @Html.EditorFor(n => n.CPFJ, new { htmlAttributes = new { @class = "input-camp" } })
+                        <label class="fw-bold mb-1 d-block">
+                            CPF/CNPJ:<span class="text-danger">&nbsp;*</span>
+                        </label>
+                        @Html.EditorFor(n => n.CPFJ, new { htmlAttributes = new { @class = "input-camp", placeholder = "Digite seu CPF/CNPJ" } })
                     </div>
                     @Html.ValidationMessageFor(n => n.CPFJ, "", new { @class = "text-center text-danger" })
                 </div>
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-md-6 mb-1">
+                <div class="col-12 col-md-6 mb-2">
                     <div class="form-group">
-                        @Html.Label("", "Email:", new { @class = " w-100 text-start fw-bold d-block mb-1" })
-                        @Html.EditorFor(n => n.Email, new { htmlAttributes = new { @class = "input-camp" } })
+                        <label class="fw-bold mb-1 d-block">
+                            Email:<span class="text-danger">&nbsp;*</span>
+                        </label>
+                        @Html.EditorFor(n => n.Email, new { htmlAttributes = new { @class = "input-camp", placeholder = "Exemplo:Email@hotmail.com" } })
                     </div>
                     @Html.ValidationMessageFor(n => n.Email, "", new { @class = "text-center text-danger" })
                 </div>
-                <div class="col-md-6 mb-1">
+                <div class="col-12 col-md-6 mb-2">
                     <div class="form-group">
-                        @Html.Label("", "Senha:", new { @class = " w-100 text-start fw-bold d-block mb-1" }) <span asp-validation-for="Senha" class="text-danger">*</span>
-                        @Html.PasswordFor(n => n.Senha, new { @class = "input-camp" })
+                        <label class="fw-bold mb-1 d-block">
+                            Senha:<span class="text-danger">&nbsp;*</span>
+                        </label>
+                        @Html.PasswordFor(n => n.Senha, new { @class = "input-camp", placeholder =  "Digite sua senha" })
                     </div>
                     @Html.ValidationMessageFor(n => n.Senha, "", new { @class = "text-center text-danger" })
                 </div>
             </div>
             @if (ViewBag.Error != null)
             {
-                <div class="text-center alert alert-danger" style="background-color: none; border: none">
+                <div class="text-center text-danger" style="background-color: transparent; border: none">
                     @ViewBag.Error
                 </div>
             }

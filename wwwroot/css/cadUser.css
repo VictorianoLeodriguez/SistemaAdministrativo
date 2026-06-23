@@ -54,14 +54,16 @@ body::before {
 }
 
 .input-camp {
-    height: 31px;
-    width: 250px;
+    height: 40px;
+    width: 100%;
+    max-width: 100%;
     border-radius: 10px;
     background-color: #eef2ef;
     border: 1px solid #c8d4cc;
     transition: all 0.25s ease;
-    display: block;  
-    margin: 0 auto;   
+    padding: 0 14px;
+    display: block;
+    box-sizing: border-box;
 }
 
 .input-camp:focus{
