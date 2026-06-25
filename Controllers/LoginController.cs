@@ -42,6 +42,6 @@ public class LoginController : Controller
         await HttpContext.SignInAsync("CookieAuth", principal);
 
         // autenticação futura
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "Home");
     }
 }

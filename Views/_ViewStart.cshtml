@@ -1,6 +1,6 @@
-﻿@* @{
-    if (ViewContext.ViewData["Controller"]?.ToString() == "Login") //Pagina de login
+﻿@{
+    if (ViewContext.ViewData["Controller"]?.ToString() == "Login" || ViewContext.ViewData["Controller"]?.ToString() == "Cadastro")
         Layout = null;
     else
-        Layout = "_Layout"; //Resto das páginas iram usar o Layout
-} *@
+        Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
