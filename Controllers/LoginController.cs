@@ -44,4 +44,10 @@ public class LoginController : Controller
         // autenticação futura
         return RedirectToAction("Index", "Home");
     }
+
+    [HttpPost]
+    public async Task<IActionResult> LogOut(){
+        await HttpContext.SignOutAsync("CookieAuth");
+        return RedirectToAction("Index", "Login");
+    }
 }

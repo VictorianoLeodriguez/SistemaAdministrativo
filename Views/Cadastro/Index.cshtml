@@ -14,14 +14,13 @@
 <body>
     <div class="conteiner">
         <h2 class="text-center mb-4">Cadastro</h2>
-
         @using (Html.BeginForm("SalvarUser", "Cadastro", FormMethod.Post))
         {
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 mb-2">
                     <div class="form-group">
                         <label class="fw-bold mb-1 d-block">
-                            Nome:<span class="text-danger">&nbsp;*</span>
+                            Nome/Nome Fantasia:<span class="text-danger">&nbsp;*</span>
                         </label>
                         @Html.EditorFor(n => n.Nome, new { htmlAttributes = new { @class = "input-camp", placeholder = "Digite seu nome" } })
                     </div>
@@ -32,12 +31,11 @@
                         <label class="fw-bold mb-1 d-block">
                             CPF/CNPJ:<span class="text-danger">&nbsp;*</span>
                         </label>
-                        @Html.EditorFor(n => n.CPFJ, new { htmlAttributes = new { @class = "input-camp", placeholder = "Digite seu CPF/CNPJ" } })
+                        @Html.EditorFor(n => n.CPFJ, new { htmlAttributes = new { @class = "input-camp", placeholder = "Digite seu CPF/CNPJ", maxlength = "18" } })
                     </div>
                     @Html.ValidationMessageFor(n => n.CPFJ, "", new { @class = "text-center text-danger" })
                 </div>
             </div>
-
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 mb-2">
                     <div class="form-group">
@@ -76,5 +74,24 @@
             </div>
         }
     </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        $('#CPFJ').on('input', function () {
+        let val = $(this).val().replace(/\D/g, '');
+        if (val.length <= 11) {
+            val = val
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        } else {
+            val = val
+                .replace(/(\d{2})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1/$2')
+                .replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+        }
+        $(this).val(val);
+    });
+        </script>
 </body>
 </html>
