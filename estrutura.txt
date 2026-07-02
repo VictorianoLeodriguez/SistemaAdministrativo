@@ -1,5 +1,21 @@
 .
 ├── appsetting.Development.json
+├── bin
+│   └── Debug
+│       └── net10.0
+│           ├── appsetting.Development.json
+│           ├── BCrypt-Net-Next.dll
+│           ├── MySqlConnector.dll
+│           ├── NUglify.dll
+│           ├── SistemaAdm
+│           ├── SistemaAdm.deps.json
+│           ├── SistemaAdm.dll
+│           ├── SistemaAdm.pdb
+│           ├── SistemaAdm.runtimeconfig.json
+│           ├── SistemaAdm.staticwebassets.endpoints.json
+│           ├── SistemaAdm.staticwebassets.runtime.json
+│           ├── tsconfig.json
+│           └── WebOptimizer.Core.dll
 ├── Contracts
 │   ├── CadastroResult.cs
 │   └── LoginResult.cs
@@ -130,4 +146,4 @@
             │   └── jquery.validate.unobtrusive.min.js
             └── LICENSE.txt
 
-32 directories, 99 files
+35 directories, 112 files
