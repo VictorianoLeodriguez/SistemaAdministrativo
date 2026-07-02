@@ -1,3 +1,4 @@
+@using System.ComponentModel.DataAnnotations
 @model SistemaAdm.ViewModel.LoginModel
 
 @{
@@ -27,7 +28,7 @@
                         @Html.AntiForgeryToken()
                         <div class="form-group">
                             @Html.Label("","CPF:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
-                            @Html.EditorFor(n=> n.CPFJ, new { htmlAttributes = new { placeholder = " Digite seu CPF ", @class = "input-camp"} })
+                            @Html.EditorFor(n=> n.CPFJ, new { htmlAttributes = new { placeholder = " Digite seu CPF ", @class = "input-camp", maxlength = "18"} })
                         </div>
                         <div class="form-group mt-3">
                             @Html.Label("","Senha:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
@@ -54,6 +55,25 @@
                 <div/>
             </div>
         </div>
-    </div>    
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        $('#CPFJ').on('input', function () {
+        let val = $(this).val().replace(/\D/g, '');
+        if (val.length <= 11) {
+            val = val
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        } else {
+            val = val
+                .replace(/(\d{2})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1/$2')
+                .replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+        }
+        $(this).val(val);
+    });
+        </script>
 </body>
-</html>
+</html> 
