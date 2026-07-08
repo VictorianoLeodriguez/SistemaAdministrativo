@@ -19,12 +19,13 @@
             </span>
     </div>
     <ul class="sidebar-menu"> 
-        <li>
+        <li class="btninicio">
             <a asp-controller="Home" asp-action="Index" class="inicio">
                 <i class="bi bi-house-door"></i>
                 <span>Início</span>
             </a>
         </li>
+        <hr>
         <li class="menu-group">
             <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuRh" aria-expanded="false">
                 <div>
@@ -87,15 +88,16 @@
             </div>
         </li>
     </ul>
+    <hr>
      <div class="sidebar-footer">
-    <form asp-controller="Login" asp-action="LogOut" method="post">
-        @Html.AntiForgeryToken()
-        <button type="submit">
-            <i class="bi bi-box-arrow-right"></i>
-            <span>Sair</span>
-        </button>
-    </form>
-</div>
+        <form asp-controller="Login" asp-action="LogOut" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sair</span>
+            </button>
+        </form>
+    </div>
     </aside>
     <main class="content expanded">
         @RenderBody()

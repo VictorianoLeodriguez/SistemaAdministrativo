@@ -171,7 +171,6 @@ body {
 }
 
 .sidebar-footer {
-    position: absolute;
     bottom: 0;
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, .08);
@@ -189,10 +188,20 @@ body {
     cursor: pointer;
     transition: .25s;
     font-size: 1rem;
+    border: none;
+    outline: none;
+}
+
+.btninicio{
+    border:none;
+}
+
+.sidebar-menu a.inicio:hover {
+    background: none;
+    color: #fff;
 }
 
 .sidebar-footer form button:hover {
-    background: #2b313d;
     color: #fff;
 }
 

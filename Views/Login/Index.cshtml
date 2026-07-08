@@ -30,9 +30,14 @@
                             @Html.Label("","CPF:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
                             @Html.EditorFor(n=> n.CPFJ, new { htmlAttributes = new { placeholder = " Digite seu CPF ", @class = "input-camp", maxlength = "18"} })
                         </div>
-                        <div class="form-group mt-3">
-                            @Html.Label("","Senha:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1"})
-                            @Html.PasswordFor(n=> n.Senha, new { @class = "input-camp", placeholder = " Digite sua Senha "})
+                       <div class="form-group mt-3">
+                            @Html.Label("", "Senha:", new { @class = "text-white w-100 text-start fw-bold d-block mb-1" })
+                            <div class="input-group">
+                                @Html.PasswordFor(n => n.Senha, new {@class = "input-camp", placeholder = " Digite sua Senha ",id = "Senha"})
+                                <button type="button" class="btn btn-eye" id="toggleSenha">
+                                    👁️
+                                </button>
+                            </div>
                         </div>
                         <div class="d-block">
                             @Html.ValidationSummary(false, "", new { @class = "text-danger" })
@@ -59,21 +64,28 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script>
         $('#CPFJ').on('input', function () {
-        let val = $(this).val().replace(/\D/g, '');
-        if (val.length <= 11) {
-            val = val
-                .replace(/(\d{3})(\d)/, '$1.$2')
-                .replace(/(\d{3})(\d)/, '$1.$2')
-                .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-        } else {
-            val = val
-                .replace(/(\d{2})(\d)/, '$1.$2')
-                .replace(/(\d{3})(\d)/, '$1.$2')
-                .replace(/(\d{3})(\d)/, '$1/$2')
-                .replace(/(\d{4})(\d{1,2})$/, '$1-$2');
-        }
-        $(this).val(val);
-    });
+            let val = $(this).val().replace(/\D/g, '');
+            if (val.length <= 11) {
+                val = val.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            }
+            else 
+            {
+                val = val.replace(/(\d{2})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1/$2').replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+            }
+            $(this).val(val);
+        });
+
+        $('#toggleSenha').on('click', function () {
+            const senha = $('#Senha');
+    
+            if (senha.attr('type') === 'password') {
+                senha.attr('type', 'text');
+                $(this).text('👀');
+            } else {
+                senha.attr('type', 'password');
+                $(this).text('👁️');
+            }
+        });
         </script>
 </body>
 </html> 

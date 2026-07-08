@@ -104,6 +104,35 @@ body::before {
     color: black;
 }
 
+.btn-eye {
+    background: #eef2ef;
+    border: 1px solid #c8d4cc;
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+    color: #555;
+    padding: 0 14px;
+}
+
+.btn-eye:hover,
+.btn-eye:focus,
+.btn-eye:active {
+    background: #eef2ef !important;
+    color: #555 !important;
+    border-color: #c8d4cc !important;
+    box-shadow: none !important;
+}
+
+.input-group .input-camp {
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+}
+
+.input-group > .input-camp {
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+}
+
 @view-transition {
     navigation: auto;
 }
