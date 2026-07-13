@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet"href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">   
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/sidebar.css" asp-append-version="true" />
 </head>
+
 <body>
     <aside class="sidebar closed" id="sidebar">
         <div class="sidebar-header">
@@ -17,111 +19,261 @@
             <span class="logo-text">
                 Axis-Management
             </span>
-    </div>
-    <ul class="sidebar-menu"> 
-        <li class="btninicio">
-            <a asp-controller="Home" asp-action="Index" class="inicio">
-                <i class="bi bi-house-door"></i>
-                <span>Início</span>
-            </a>
-        </li>
-        <hr>
-        <li class="menu-group">
-            <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuRh" aria-expanded="false">
-                <div>
-                    <i class="bi bi-people"></i>
-                    <span>RH</span>
-                </div>
-                <i class="bi bi-chevron-down arrow"></i>
-            </button>
-            <div class="collapse" id="menuRh">
-                <a href="#">Funcionários</a>
-                <a href="#">Cargos</a>
-                <a href="#">Departamentos</a>
-                <a href="#">Férias</a>
-                <a href="#">Benefícios</a>
-            </div>
-        </li>
-        <li class="menu-group">
-            <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuFin" aria-expanded="false">
-                <div>
-                    <i class="bi bi-cash-stack"></i>
-                    <span>Financeiro</span>
-                </div>
-                <i class="bi bi-chevron-down arrow"></i>
-            </button>
-            <div class="collapse" id="menuFin">
-                <a href="#">Contas a Receber</a>
-                <a href="#">Contas a Pagar</a>
-                <a href="#">Fluxo de Caixa</a>
-                <a href="#">Bancos</a>
-            </div>
-        </li>
-        <li class="menu-group">
-            <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuProd" aria-expanded="false">
-                <div>
-                    <i class="bi bi-box-seam"></i>
-                    <span>Produtos</span>
-                </div>
-                <i class="bi bi-chevron-down arrow"></i>
-            </button>
-            <div class="collapse" id="menuProd">
-                <a href="#">Produtos</a>
-                <a href="#">Categorias</a>
-                <a href="#">Marcas</a>
-                <a href="#">Estoque</a>
-            </div>
-        </li>
-        <li class="menu-group">
-            <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuAdm" aria-expanded="false">
-                <div>
-                    <i class="bi bi-gear"></i>
-                    <span>Administração</span>
-                </div>
-                <i class="bi bi-chevron-down arrow"></i>
-            </button>
-            <div class="collapse" id="menuAdm">
-                <a href="#">Usuários</a>
-                <a href="#">Perfis</a>
-                <a href="#">Permissões</a>
-                <a href="#">Auditoria</a>
-            </div>
-        </li>
-    </ul>
-    <hr>
-     <div class="sidebar-footer">
-        <form asp-controller="Login" asp-action="LogOut" method="post">
-            @Html.AntiForgeryToken()
-            <button type="submit">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sair</span>
-            </button>
-        </form>
-    </div>
-    </aside>
-    <main class="content expanded">
-        @RenderBody()
-    </main>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="btninicio">
+                <a asp-controller="Home" asp-action="Index" class="inicio">
+                    <i class="bi bi-house-door"></i>
+                    <span>Início</span>
+                </a>
+            </li>
+            <hr>
+            <li class="menu-group">
+                <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#cadMenu" aria-expanded="false">
+                    <div>
+                        <i class="bi bi-journal-text"></i>
+                        <span>Cadastros</span>
+                    </div>
+                    <i class="bi bi-chevron-down arrow"></i>
+                </button>
+                <div class="collapse" id="cadMenu">
+                    <a href="#">Funcionarios</a>
+                    <a href="#">Clientes</a>
+                    <a href="#">Fornecedores</a>
+                    <a href="#">Produtos</a>
+                    <div class="menu-group submenu-group">
+                        <button class="menu-toggle submenu-toggle" data-bs-toggle="collapse"
+                                data-bs-target="#cadMenuConfig" aria-expanded="false">
+                            <div>
+                                <i class="bi bi-gear"></i>
+                                <span>Configurações</span>
+                            </div>
+                            <i class="bi bi-chevron-down arrow"></i>
+                        </button>
+                        <div class="collapse" id="cadMenuConfig">
+                            <div class="menu-group submenu-group">
+                                <button class="menu-toggle submenu-toggle" data-bs-toggle="collapse"
+                                        data-bs-target="#cadMenuConfigRH" aria-expanded="false">
+                                    <div>
+                                        <i class="bi bi-people"></i>
+                                        <span>RH</span>
+                                    </div>
+                                    <i class="bi bi-chevron-down arrow"></i>
+                                </button>
+                                <div class="collapse" id="cadMenuConfigRH">
+                                    <a href="#">Cargos</a>
+                                    <a href="#">Departamentos</a>
+                                    <a href="#">Benefícios</a>
+                                    <a href="#">Tipos de Medidas Disciplinares</a>
+                                    <a href="#">Motivos de Desligamentos</a>
+                                    <a href="#">Tipos de Contratos</a>
+                                    <a href="#">Escalas de Trabalho</a>
+                                </div>
+                            </div>
+                            <div class="menu-group submenu-group">
+                                <button class="menu-toggle submenu-toggle" data-bs-toggle="collapse"
+                                        data-bs-target="#cadMenuConfigFinan" aria-expanded="false">
+                                    <div>
+                                        <i class="bi bi-people"></i>
+                                        <span>Financeiro</span>
+                                    </div>
+                                    <i class="bi bi-chevron-down arrow"></i>
+                                </button>
+                                <div class="collapse" id="cadMenuConfigFinan">
+                                    <a href="#">Bancos</a>
+                                    <a href="#">Tipos de pagamentos</a>
+                                    <a href="#">Plano de Contas</a>
+                                    <a href="#">Centro de Custos</a>
+                                </div>
+                            </div>
+                            <div class="menu-group submenu-group">
+                                <button class="menu-toggle submenu-toggle" data-bs-toggle="collapse"
+                                        data-bs-target="#cadMenuConfigProdutos" aria-expanded="false">
+                                    <div>
+                                        <i class="bi bi-border-width"></i>
+                                        <span>Produtos</span>
+                                    </div>
+                                    <i class="bi bi-chevron-down arrow"></i>
+                                </button>
+                                <div class="collapse" id="cadMenuConfigProdutos">
+                                    <a href="#">Categorias</a>
+                                    <a href="#">Marcas</a>
+                                    <a href="#">Unidades de Medida</a>
+                                    <a href="#">Localizações</a>
+                                    <a href="#">Tabela de Preços</a>
+                                </div>
+                            </div>
+                            <div class="menu-group submenu-group">
+                                <button class="menu-toggle submenu-toggle" data-bs-toggle="collapse"
+                                        data-bs-target="#cadMenuConfigComercializacao" aria-expanded="false">
+                                    <div>
+                                        <i class="bi bi-truck"></i>
+                                        <span>Transportes</span>
+                                    </div>
+                                    <i class="bi bi-chevron-down arrow"></i>
+                                </button>
+                                <div class="collapse" id="cadMenuConfigComercializacao">
+                                    <a href="#">Formas de Pagamento</a>
+                                    <a href="#">Tipos de Fretes</a>
+                                    <a href="#">Transportadoras</a>
+                                </div>
+                            </div>
+                            <div class="menu-group submenu-group">
+                                <button class="menu-toggle submenu-toggle" data-bs-toggle="collapse"
+                                        data-bs-target="#cadMenuConfigFiscal" aria-expanded="false">
+                                    <div>
+                                        <i class="bi bi-wallet"></i>
+                                        <span>Fiscal</span>
+                                    </div>
+                                    <i class="bi bi-chevron-down arrow"></i>
+                                </button>
+                                <div class="collapse" id="cadMenuConfigFiscal">
+                                    <a href="#">CFOP</a>
+                                    <a href="#">CST</a>
+                                    <a href="#">NCM</a>
+                                    <a href="#">CEST</a>
+                                    <a href="#">Natureza de Operação</a>
+                                    <a href="#">Imposto</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="menu-group">
+                    <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuRh" aria-expanded="false">
+                        <div>
+                            <i class="bi bi-people"></i>
+                            <span>RH</span>
+                        </div>
+                        <i class="bi bi-chevron-down arrow"></i>
+                    </button>
+                    <div class="collapse" id="menuRh">
+                        <a href="#">Treinamentos - ISO</a>
+                        <a href="#">Treinamentos</a>
+                    </div>
+                </li>
+                <li class="menu-group">
+                    <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuFin" aria-expanded="false">
+                        <div>
+                            <i class="bi bi-cash-stack"></i>
+                            <span>Financeiro</span>
+                        </div>
+                        <i class="bi bi-chevron-down arrow"></i>
+                    </button>
+                    <div class="collapse" id="menuFin">
+                        <a href="#">Contas a Receber</a>
+                        <a href="#">Contas a Pagar</a>
+                        <a href="#">Caixa</a>
+                        <a href="#">Boletos</a>
+                        <a href="#">Orçamentos</a>
+                    </div>
+                </li>
+                <li class="menu-group">
+                    <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuProd" aria-expanded="false">
+                        <div>
+                            <i class="bi bi-box-seam"></i>
+                            <span>Produtos</span>
+                        </div>
+                        <i class="bi bi-chevron-down arrow"></i>
+                    </button>
+                    <div class="collapse" id="menuProd">
+                        <a href="#">Estoque</a>
+                        <a href="#">Inventário</a>
+                        <a href="#">Movimentações</a>
+                    </div>
+                </li>
+                <li class="menu-group">
+                    <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuVendas"
+                            aria-expanded="false">
+                        <div>
+                            <i class="bi bi-cart"></i>
+                            <span>Compras</span>
+                        </div>
+                        <i class="bi bi-chevron-down arrow"></i>
+                    </button>
+                    <div class="collapse" id="menuVendas">
+                        <a href="#">Solicitações</a>
+                        <a href="#">Pedidos/reservas</a>
+                        <a href="#">Entrada de Mercadoria</a>
+                    </li>
+                    <li class="menu-group">
+                        <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuComercial"
+                                aria-expanded="false">
+                            <div>
+                                <i class="bi bi-cart-check"></i>
+                                <span>Comercial</span>
+                            </div>
+                            <i class="bi bi-chevron-down arrow"></i>
+                            <div class="collapse" id="menuComercial">
+                                <a href="#">Orçamentos</a>
+                                <a href="#">Pedidos</a>
+                                <a href="#">Contratos</a>
+                            </div>
+                        </li>
+                        <li class="menu-group">
+                            <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuFiscal"
+                                    aria-expanded="false">
+                                <div>
+                                    <i class="bi bi-file-earmark-text"></i>
+                                    <span>Fiscal</span>
+                                </div>
+                                <i class="bi bi-chevron-down arrow"></i>
+                            </button>
+                            <div class="collapse" id="menuFiscal">
+                                <a href="#">Notas Fiscais</a>
+                                <a href="#">Obrigações</a>
+                            </li>
+                            <li class="menu-group">
+                                <button class="menu-toggle" data-bs-toggle="collapse" data-bs-target="#menuAdm" aria-expanded="false">
+                                    <div>
+                                        <i class="bi bi-gear"></i>
+                                        <span>Administração</span>
+                                    </div>
+                                    <i class="bi bi-chevron-down arrow"></i>
+                                </button>
+                                <div class="collapse" id="menuAdm">
+                                    <a href="#">Usuários</a>
+                                    <a href="#">Perfis</a>
+                                    <a href="#">Permissões</a>
+                                    <a href="#">Auditoria</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <hr>
+                        <div class="sidebar-footer">
+                            <form asp-controller="Login" asp-action="LogOut" method="post">
+                                @Html.AntiForgeryToken()
+                                <button type="submit">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Sair</span>
+                                </button>
+                            </form>
+                        </div>
+                    </aside>
+                    <main class="content expanded">
+                        @RenderBody()
+                    </main>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
+                    <script>
 
-        $(document).on("click", "#btnSidebar", function () {
-            $("#sidebar").toggleClass("closed");
-            $(".content").toggleClass("expanded");
+                        $(document).on("click", "#btnSidebar", function () {
+                        $("#sidebar").toggleClass("closed");
+                        $(".content").toggleClass("expanded");
 
-            if ($("#sidebar").hasClass("closed")) {
-                $("#sidebar .menu-toggle").attr("aria-expanded", "false");
-            }
-            else{
-                $("#sidebar .menu-toggle").attr("data-bs-toggle", "collapse");
-            }
-        });
+                        if ($("#sidebar").hasClass("closed")) {
+                        $("#sidebar .menu-toggle").attr("aria-expanded", "false");
+                        }
+                        else {
+                        $("#sidebar .menu-toggle").attr("data-bs-toggle", "collapse");
+                        }
+                        });
 
-    </script>
+                    </script>
 
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+                    @await RenderSectionAsync("Scripts", required: false)
+                </body>
+
+            </html>

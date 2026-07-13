@@ -9,13 +9,34 @@ body {
     overflow-x: hidden;
 }
 
+.top-header {
+position: fixed;
+top: 0;
+left: 270px;
+right: 0;
+height: 60px;
+background-color: rgba(7, 116, 62, 0.812);
+z-index: 500;
+border-radius: 0 0 5px 5px;
+border-top-left-radius: 0 0 10px 10px;
+transition: left .4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content.expanded .top-header {
+left: 75px;
+}
+
+.top-header-title {
+color: white;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: 270px;
     height: 100vh;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0 0 10px 0px;
     background: linear-gradient(45deg, rgba(0, 80, 40, 0.6), rgba(4, 98, 51, 0.945));
     color: #fff;
     overflow-y: auto;
@@ -139,6 +160,49 @@ body {
 .menu-toggle[aria-expanded="true"] .arrow { transform: rotate(180deg); }
 .menu-toggle[aria-expanded="false"] .arrow { transform: rotate(0deg); }
 
+.submenu-group{
+    border-left:2px solid rgba(255,255,255,.15);
+    margin-left:20px;
+}
+
+.submenu-group .menu-toggle{
+    padding-left:30px;
+}
+
+.submenu-group .collapse a{
+    padding-left:50px;
+}
+
+.submenu-toggle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 12px 20px 12px 55px;
+    background: transparent;
+    border: none;
+    color: #d7d7d7;
+    font-size: 14px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.submenu-toggle:hover{
+    background: #2b313d;
+    color: #fff;
+}
+
+.submenu-toggle > div{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.submenu-toggle .arrow{
+    font-size: 12px;
+}
+
 .sidebar.closed 
 .menu-toggle,
 .sidebar.closed 
@@ -162,7 +226,7 @@ body {
 .content {
     margin-left: 270px;
     min-height: 100vh;
-    padding: 20px;
+    padding: 80px 20px 20px 20px;
     transition: .3s;
 }
 
