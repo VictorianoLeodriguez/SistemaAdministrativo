@@ -87,20 +87,20 @@
                                     <label for="NomeFantasia" class="form-label">
                                         Nome Fantasia
                                     </label>
-                                    <input type="text" class="form-control" id="NomeFantasia" name="NomeFantasia"
+                                    <input type="text input-camp " class="form-control" id="NomeFantasia" name="NomeFantasia"
                                            placeholder="Ex: Alfa Distribuidora" />
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <label for="DataFundacao" class="form-label">
                                         Data de Fundação
                                     </label>
-                                    <input type="date" class="form-control" id="DataFundacao" name="DataFundacao" />
+                                    <input type="date input-camp " class="form-control" id="DataFundacao" name="DataFundacao" />
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="Situacao" class="form-label">
                                         Situação
                                     </label>
-                                    <select class="form-select" id="Situacao" name="Situacao">
+                                    <select class="form-select input-camp" id="Situacao" name="Situacao">
 
                                         <option value="Ativa" selected>Ativa</option>
                                         <option value="Inativa">Inativa</option>
@@ -120,8 +120,32 @@
                                     <label for="Observacoes" class="form-label">
                                         Observações
                                     </label>
-                                    <textarea class="form-control" id="Observacoes" name="Observacoes" rows="3"
+                                    <textarea class="form-control input-camp" id="Observacoes" name="Observacoes" rows="3"
                                               placeholder="Informações adicionais sobre a empresa"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pane-endereco" role="tabpanel"
+                             aria-activedescendant="tab-endereco">
+                            <div class="row g-3">
+                                <div class="col-12 col col-md-8">
+                                    @Html.LabelFor(m => m.CPFJ, new { @class = "form-label" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pane-contatos" role="tabpanel"
+                             aria-activedescendant="tab-contatos">
+                            <div class="row g-3">
+                                <div class="col-12 col col-md-8">
+                                    @Html.LabelFor(m => m.CPFJ, new { @class = "form-label" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pane-responsavel" role="tabpanel"
+                             aria-activedescendant="tab-responsavel">
+                            <div class="row g-3">
+                                <div class="col-12 col col-md-8">
+                                    @Html.LabelFor(m => m.CPFJ, new { @class = "form-label" })
                                 </div>
                             </div>
                         </div>

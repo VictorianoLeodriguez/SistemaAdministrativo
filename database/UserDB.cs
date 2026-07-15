@@ -27,7 +27,7 @@ public class UserDB
         return new User
         {
             Codigo = int.TryParse(result["USR_AIC"], out int cod) ? cod : 0,
-            Nome   = result.GetValueOrDefault("USR_NAME") ?? string.Empty,
+            RazaoSocial   = result.GetValueOrDefault("USR_NAME") ?? string.Empty,
             Senha  = result.GetValueOrDefault("USR_PASS") ?? string.Empty,
             Email  = result.GetValueOrDefault("USR_EML")  ?? string.Empty,
             CPFJ   = result.GetValueOrDefault("USR_CPFJ") ?? string.Empty,
@@ -58,7 +58,7 @@ public class UserDB
         return new User
         {
             Codigo = int.TryParse(results["USR_AIC"], out int cod) ? cod : 0,
-            Nome   = results.GetValueOrDefault("USR_NAME") ?? string.Empty,
+            RazaoSocial   = results.GetValueOrDefault("USR_NAME") ?? string.Empty,
             Senha  = results.GetValueOrDefault("USR_PASS") ?? string.Empty,
             Email  = results.GetValueOrDefault("USR_EML")  ?? string.Empty,
             CPFJ   = results.GetValueOrDefault("USR_CPFJ") ?? string.Empty,
