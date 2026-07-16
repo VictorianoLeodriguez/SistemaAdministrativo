@@ -4,4 +4,5 @@ obj/
 *.user
 *.suo
 *estrutura.txt
+*projeto.txt
 .vscode/
