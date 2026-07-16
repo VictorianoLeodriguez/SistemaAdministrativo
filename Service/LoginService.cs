@@ -10,6 +10,8 @@ public class LoginService
 {
     public static LoginResult Autenticar(string documento, string senha)
     {
+        documento = documento.Replace(".", "").Replace("-", "").Replace("/", "").Trim();
+
         User userBanco = UserDB.BuscarUserAuth(documento);
 
         if (userBanco == null || !Utils.VerificarSenha(senha, userBanco.Senha))
