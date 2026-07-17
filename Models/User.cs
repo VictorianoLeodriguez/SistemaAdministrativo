@@ -5,11 +5,8 @@ public class User
 {
     public int Codigo { get; set; }
     // Dados da empresa
-    [Required]
     public string RazaoSocial { get; set; }
     public string NomeFantasia { get; set; }
-    [Required]
-    public string CNPJ { get; set; }
     public DateTime DataFundacao { get; set; }
     public string Situacao { get; set; }
     public string Site { get; set; }
