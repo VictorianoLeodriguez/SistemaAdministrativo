@@ -17,7 +17,7 @@ public class CadastroModel
     [Display(Name = "E-Mail")]
     public string Email { get; set; }
 
-    [Required(ErrorMessage = "O Campo de CPF/CNPJ é Obrigatório")]
+    [Required(ErrorMessage = "O Campo de CNPJ é Obrigatório")]
     public string CNPJ { get; set; }
 
     [Required(ErrorMessage = "O Campo CEP é Obrigatório")]
@@ -41,8 +41,10 @@ public class CadastroModel
     [Required(ErrorMessage = "O campo Estado é Obrigatório")]
     public string Estado { get; set; }
 
+    [Required(ErrorMessage = "O Campo Telefone é Obrigatório")]
     public string Telefone { get; set; }
 
+    [Required(ErrorMessage = "O Campo Celular é Obrigatório")]
     public string Celular { get; set; }
 
     [Required(ErrorMessage = "O campo Nome do Responsável é Obrigatório")]
@@ -51,8 +53,10 @@ public class CadastroModel
 
     public string Site { get; set; }
 
+    [Required(ErrorMessage = "O campo Data de Fundação é obrigatório.")]
     [Display(Name = "Data de Fundação")]
-    public DateTime DataFundacao { get; set; }
+    [DataType(DataType.Date)]
+    public DateTime? DataFundacao { get; set; }
 
     [Required(ErrorMessage = "O Campo Senha é Obrigatório")]
     public string Senha { get; set; }

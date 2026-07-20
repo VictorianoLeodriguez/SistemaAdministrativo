@@ -2,61 +2,59 @@ using SistemaAdm.Contracts;
 using SistemaAdm.database;
 using SistemaAdm.Helpers;
 using SistemaAdm.Models;
-using SistemaAdm.ViewModel;
 
 namespace SistemaAdm.Service;
 
 public class CadService
 {
-    public static CadastroResult SalvarUser(string cpfj, string email, string nome, string senha)
+    public static CadastroResult SalvarUser(User user)
     {
-        if (!Utils.ValidarDocumento(cpfj))
+        if (!Utils.ValidarDocumento(user.CNPJ))
         {
             return new CadastroResult
             {
                 Sucesso = false,
-                Mensagem = cpfj.Length == 11 ? "CPF Inválido" : "CNPJ Inválido"
+                Mensagem = "CNPJ inválido."
             };
         }
 
-        if (!Utils.ValidarEmail(email))
+        if (!Utils.ValidarEmail(user.Email))
         {
             return new CadastroResult
             {
                 Sucesso = false,
-                Mensagem = "Email Inválido",
+                Mensagem = "E-mail inválido."
             };
         }
 
-        User userExiste = UserDB.ExisteUser(email, cpfj);
-        
-        if(userExiste != null)
+        User usuarioExistente = UserDB.ExisteUser(user.Email, user.CNPJ);
+
+        if (usuarioExistente != null)
         {
             return new CadastroResult
             {
                 Sucesso = false,
-                Mensagem = "E-mail ou CPF/CNPJ já cadastrado."
+                Mensagem = "E-mail ou CNPJ já cadastrado."
             };
         }
 
-        var hash = Utils.HashSenha(senha);
+        user.Senha = Utils.HashSenha(user.Senha);
 
-        var user = UserDB.CadastrarUser(nome, hash, email, cpfj, out string errorMsg);
+        UserDB.CadastrarUser(user, out string errorMsg);
 
-        if(!string.IsNullOrEmpty(errorMsg))
+        if (string.IsNullOrEmpty(errorMsg))
         {
             return new CadastroResult
             {
                 Sucesso = false,
-                Mensagem = "Erro ao Cadastrar usuário:" + errorMsg
+                Mensagem = "Erro ao cadastrar usuário: " + errorMsg
             };
         }
 
         return new CadastroResult
         {
             Sucesso = true,
-            Mensagem = "Usuário Cadastrado com sucesso"
+            Mensagem = "Usuário cadastrado com sucesso."
         };
-
     }
 }

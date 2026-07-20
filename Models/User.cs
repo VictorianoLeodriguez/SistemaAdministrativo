@@ -24,7 +24,7 @@ public class User
     public string Email { get; set; }
     // Responsável
     public string NomeResponsavel { get; set; }
-    public string CPFJ { get; set; }
+    public string CNPJ { get; set; }
     // Login
     [Required]
     public string Senha { get; set; }

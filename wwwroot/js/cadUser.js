@@ -17,9 +17,7 @@ $(document).ready(function () {
 
         $(this).val(val);
     });
-});
 
-$(document).ready(function () {
     $('#LogoFile').on('change', function () {
         const file = this.files[0];
 
@@ -39,5 +37,14 @@ $(document).ready(function () {
             reader.readAsDataURL(file);
         }
 
+    });
+
+        $('#Cep').on('input', function () {
+
+        let cep = $(this).val().replace(/\D/g, '');
+
+        cep = cep.replace(/^(\d{5})(\d)/, '$1-$2');
+
+        $(this).val(cep.substring(0, 9));
     });
 });
