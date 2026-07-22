@@ -1,9 +1,12 @@
 using System.Net.Mail;
+using SistemaAdm.Models;
 
 namespace SistemaAdm.Helpers;
 
 public class Utils
 {
+
+    #region Helpers
     public static DateTime GetCurrentTime()
     {
         return DateTime.Now;
@@ -146,4 +149,31 @@ public static bool ValidarDocumento(string documento)
     {
         return BCrypt.Net.BCrypt.Verify(senha, hash);
     }
+    #endregion
+
+    #region Status
+
+    public enum StatusEmpresa
+    {
+        Ativo = 1,
+        Inativo = 2,
+        Pendente = 3,
+        EmAnalise = 4,
+        Bloqueado = 5
+    }
+
+    public static List<CodigoNome> GetStatusEmpresa()
+    {
+        return new List<CodigoNome>
+        {
+            new CodigoNome { Codigo = (int)StatusEmpresa.Ativo, Nome = "Ativo" },
+            new CodigoNome { Codigo = (int)StatusEmpresa.Inativo, Nome = "Inativo" },
+            new CodigoNome { Codigo = (int)StatusEmpresa.Pendente, Nome = "Pendente" },
+            new CodigoNome { Codigo = (int)StatusEmpresa.EmAnalise, Nome = "Em Análise" },
+            new CodigoNome { Codigo = (int)StatusEmpresa.Bloqueado, Nome = "Bloqueado" }
+        };
+    }
+
+    #endregion
 }   
+    

@@ -29,7 +29,6 @@ public class CadastroModel
     [Required(ErrorMessage = "O campo Número é Obrigatório")]
     [Display(Name = "Número")]
     public string Numero { get; set; }
-
     public string Complemento { get; set; }
 
     [Required(ErrorMessage = "O campo Bairro é Obrigatório")]
